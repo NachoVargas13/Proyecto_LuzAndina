@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pago Virtual - Colegio Luz Andina</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --principal: #00A79D;
+        --principal-oscuro: #00897B;
+        --azul-texto: #002b7f;
+        --gris-fondo: #f4f6f9;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: var(--gris-fondo);
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        background: linear-gradient(135deg, var(--principal), var(--principal-oscuro));
+        color: #fff;
+        padding: 20px 10px;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    main {
+        flex: 1;
+        max-width: 700px;
+        background: #fff;
+        margin: 40px auto;
+        padding: 35px 30px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+        color: var(--azul-texto);
+        text-align: center;
+        margin-bottom: 12px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    p {
+        text-align: center;
+        color: #555;
+        margin-bottom: 30px;
+        font-size: 15px;
+    }
+
+    label {
+        font-weight: 500;
+        display: block;
+        margin-bottom: 6px;
+        color: #444;
+        font-size: 14px;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 18px;
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+    select:focus, input:focus {
+        outline: none;
+        border-color: var(--principal);
+        box-shadow: 0 0 6px rgba(0,167,157,0.4);
+    }
+
+    button {
+        background: var(--principal);
+        color: #fff;
+        border: none;
+        padding: 13px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: var(--principal-oscuro);
+        transform: translateY(-1px);
+    }
+
+    footer {
+        text-align: center;
+        padding: 18px;
+        font-size: 13px;
+        background: var(--principal);
+        color: #fff;
+        margin-top: auto;
+        box-shadow: 0 -3px 8px rgba(0,0,0,0.15);
+    }
+
+    /* 🌟 Diseño responsive */
+    @media (max-width: 768px) {
+        main {
+            margin: 20px;
+            padding: 25px 20px;
+        }
+        header h1 {
+            font-size: 20px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        button {
+            font-size: 15px;
+            padding: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header h1 {
+            font-size: 18px;
+        }
+        main {
+            margin: 15px;
+            padding: 20px 15px;
+        }
+        select, input {
+            font-size: 14px;
+            padding: 10px;
+        }
+        h2 {
+            font-size: 17px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Colegio Particular Luz Andina<br>Reina de las Américas</h1>
+</header>
+
+<main>
+    <h2>💳 Pago Virtual de Matrícula</h2>
+    <p>Complete los siguientes pasos para realizar el pago de matrícula.</p>
+
+    <div id="paso1">
+        <label for="grado">Seleccione el grado:</label>
+        <select id="grado">
+            <option value="">— Seleccionar —</option>
+            <option value="1ro de Primaria">1ro de Primaria</option>
+            <option value="2do de Primaria">2do de Primaria</option>
+            <option value="3ro de Primaria">3ro de Primaria</option>
+            <option value="4to de Primaria">4to de Primaria</option>
+            <option value="5to de Primaria">5to de Primaria</option>
+        </select>
+
+        <label for="dni">Ingrese el DNI del estudiante:</label>
+        <input type="text" id="dni" placeholder="Ejemplo: 42154789" maxlength="8">
+
+        <button onclick="buscarEstudiante()">Buscar Estudiante</button>
+    </div>
+</main>
+
+<footer>
+    © 2025 - Sistema de Pagos Virtuales | Luz Andina Reina de las Américas
+</footer>
+
+<script>
+function buscarEstudiante() {
+    const grado = document.getElementById('grado').value;
+    const dni = document.getElementById('dni').value.trim();
+
+    if (grado === "" || dni === "") {
+        alert(" Por favor, complete todos los campos antes de continuar.");
+        return;
+    }
+
+    // Aquí luego conectarás con tu backend PHP o MySQL
+    alert(`🔎 Buscando estudiante del ${grado} con DNI ${dni}...`);
+}
+</script>
+
+</body>
+</html>
